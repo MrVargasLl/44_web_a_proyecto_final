@@ -1,13 +1,18 @@
-
-
+import { api } from "../api"
 import { useForm } from "react-hook-form"
 
 export const FormularioAlumno = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
+    
+    const handleAlumno = async (data) => {
+    const { nombre, edad, grupo } = data
+    await api.post('/', { nombre, edad, grupo } )
+
+}
 
     return (
-        <form onSubmit={handleSubmit(handleSubmit)}>
+        <form onSubmit={handleSubmit(handleAlumno)}>
             <input type="text" 
                 placeholder="Nombre"     
                 {...register("nombre", { required: "El nombre es obligatorio" })}
