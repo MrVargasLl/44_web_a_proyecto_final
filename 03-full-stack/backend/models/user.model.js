@@ -20,3 +20,5 @@ password: {
 {
     timestamps: true
 })
+
+export default mongoose.model("User", userSchema)
